@@ -45,7 +45,7 @@ export const ClientsCarousel = () => {
         controls.start({
           x: -totalWidth,
           transition: {
-            duration: clientLogos.length * 1, // Slower animation (5 seconds per logo)
+            duration: clientLogos.length * 1.5, // Slightly slower animation for better visibility
             ease: "linear",
             repeat: Infinity,
             repeatType: "loop",
@@ -64,18 +64,18 @@ export const ClientsCarousel = () => {
   }, [controls, clientLogos.length]);
 
   return (
-    <div className="px-52 py-20 w-full overflow-hidden" data-framer-name="Container">
+    <div className="px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-8 sm:py-12 md:py-16 w-full overflow-hidden" data-framer-name="Container">
       <div className="[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_15%,rgb(0,0,0)_85%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_15%,rgb(0,0,0)_85%,rgba(0,0,0,0)_100%)]">
-        <section className="flex w-full h-full max-w-full max-h-full place-items-center m-0 px-10 pb-8 pt-4 list-none opacity-100 overflow-hidden">
+        <section className="flex w-full h-full max-w-full max-h-full place-items-center m-0 px-2 sm:px-4 md:px-8 pb-6 pt-2 list-none opacity-100 overflow-hidden">
           <motion.ul
             ref={containerRef}
             animate={controls}
-            className="flex w-fit h-full max-h-full place-items-center m-0 p-0 list-none gap-[80px] relative flex-row will-change-transform"
+            className="flex w-fit h-full max-h-full place-items-center m-0 p-0 list-none gap-[30px] sm:gap-[40px] md:gap-[60px] lg:gap-[80px] relative flex-row will-change-transform"
           >
             {/* First set of logos */}
             {clientLogos.map((logo, index) => (
               <li key={`first-${index}`}>
-                <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[55px] h-[55px]">
+                <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
                   <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
                     <img
                       decoding="async"
@@ -91,7 +91,7 @@ export const ClientsCarousel = () => {
             {/* Second set of logos (duplicated) */}
             {clientLogos.map((logo, index) => (
               <li key={`second-${index}`} aria-hidden="true">
-                <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[55px] h-[55px]">
+                <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
                   <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
                     <img
                       decoding="async"
@@ -107,7 +107,7 @@ export const ClientsCarousel = () => {
             {/* Third set of logos for smoother looping */}
             {clientLogos.map((logo, index) => (
               <li key={`third-${index}`} aria-hidden="true">
-                <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[55px] h-[55px]">
+                <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
                   <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
                     <img
                       decoding="async"
@@ -123,10 +123,10 @@ export const ClientsCarousel = () => {
         </section>
       </div>
 
-      <div className="text-center pt-10 font-['Poppins']" data-framer-name="Already chosen by the leaders">
+      <div className="text-center pt-4 sm:pt-6 md:pt-8 font-['Poppins']" data-framer-name="Already chosen by the leaders">
         <Link
           href="/ecosystem"
-          className="text-[20px] text-[#bababa] hover:text-[#747575] transition-colors -tracking-[0.01em] font-normal leading-[26px]"
+          className="text-sm sm:text-base md:text-lg lg:text-[20px] text-[#bababa] hover:text-[#747575] transition-colors -tracking-[0.01em] font-normal leading-relaxed"
         >
           <u> Take a look at our happy customers -&gt; </u>
         </Link>
