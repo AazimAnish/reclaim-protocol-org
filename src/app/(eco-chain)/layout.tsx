@@ -12,7 +12,7 @@ export default function EcosystemLayout({
 }) {
   // Ref for title animation
   const titleRef = useRef<HTMLDivElement>(null);
-  
+
   // Get current path to determine active button
   const pathname = usePathname();
   const isEcosystemActive = pathname === "/ecosystem";
@@ -20,25 +20,25 @@ export default function EcosystemLayout({
 
   return (
     <div className="min-h-screen flex flex-col relative bg-transparent overflow-x-hidden">
-      <main className="flex-1 w-full pt-[76px] sm:pt-[92px] md:pt-[108px] lg:pt-[124px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-16 sm:pt-24 md:pt-32 lg:pt-40">
+      <main className="flex-1 w-full pt-[76px] sm:pt-[92px] md:pt-[108px] lg:pt-[12px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-16 sm:pt-24 md:pt-32 lg:pt-35">
           <div className="flex flex-col items-center gap-12 sm:gap-16">
             {/* Animated Heading */}
-            <div 
-              ref={titleRef} 
-              className="w-full text-center max-w-4xl mx-auto"
+            <div
+              ref={titleRef}
+              className="w-full text-center max-w-full mx-auto px-2 sm:px-4"
             >
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ 
+                transition={{
                   duration: 0.8,
                   ease: [0.4, 0.0, 0.2, 1]
                 }}
-                className="font-['Poppins', 'Poppins Placeholder', sans-serif] font-[500] text-[32px] sm:text-[44px] md:text-[54px] text-[#0000EE] leading-[1.2] sm:leading-[1.2] md:leading-[65px]"
+                className="font-['Poppins'] font-[500] text-[28px] sm:text-[44px] md:text-[54px] text-[#0000EE] leading-[1.2] sm:leading-[1.2] md:leading-[65px] max-w-max text-center mx-auto tracking-tight"
               >
-                Live and Growing <br/>
-                across many ecosystems, onchain
+                <span className="block">Live and Growing</span>
+                <span className="block">across many ecosystems, onchain</span>
               </motion.h1>
             </div>
 
@@ -46,7 +46,7 @@ export default function EcosystemLayout({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
+              transition={{
                 duration: 0.8,
                 delay: 0.3,
                 ease: [0.4, 0.0, 0.2, 1]
@@ -59,17 +59,15 @@ export default function EcosystemLayout({
                   scale: 1.05,
                   transition: { duration: 0.3 }
                 }}
-                className={`rounded-[30px] border px-8 py-3.5 font-normal cursor-pointer group ${
-                  isChainsActive 
-                    ? "border-[#0000EE] border-[3px]" 
-                    : "border-[#A1A1FF] border-[1px]"
-                }`}
+                className={`rounded-[30px] border px-8 py-3.5 font-normal cursor-pointer group w-[150px] flex justify-center ${isChainsActive
+                  ? "border-[#0000EE] border-[3px]"
+                  : "border-[#A1A1FF] border-[1px]"
+                  }`}
               >
                 <Link
                   href="/chains"
-                  className={`font-['Poppins'] whitespace-nowrap transition-colors duration-300 px-4 ${
-                    isChainsActive ? "text-[#0000EE]" : "text-[#7D7DFF]"
-                  }`}
+                  className={`font-['Poppins'] whitespace-nowrap transition-colors duration-300 ${isChainsActive ? "text-[#0000EE]" : "text-[#7D7DFF]"
+                    }`}
                 >
                   Chains
                 </Link>
@@ -81,19 +79,17 @@ export default function EcosystemLayout({
                   scale: 1.05,
                   transition: { duration: 0.3 }
                 }}
-                className={`rounded-[30px] border px-8 py-3.5 font-normal cursor-pointer group ${
-                  isEcosystemActive || (!isChainsActive && !isEcosystemActive)
-                    ? "border-[#0000EE] border-[3px]" 
-                    : "border-[#A1A1FF] border-[1px]"
-                }`}
+                className={`rounded-[30px] border px-8 py-3.5 font-normal cursor-pointer group w-[150px] flex justify-center ${isEcosystemActive || (!isChainsActive && !isEcosystemActive)
+                  ? "border-[#0000EE] border-[3px]"
+                  : "border-[#A1A1FF] border-[1px]"
+                  }`}
               >
                 <Link
                   href="/ecosystem"
-                  className={`font-['Poppins'] whitespace-nowrap transition-colors duration-300 px-4 ${
-                    isEcosystemActive || (!isChainsActive && !isEcosystemActive) 
-                      ? "text-[#0000EE]" 
-                      : "text-[#7D7DFF]"
-                  }`}
+                  className={`font-['Poppins'] whitespace-nowrap transition-colors duration-300 ${isEcosystemActive || (!isChainsActive && !isEcosystemActive)
+                    ? "text-[#0000EE]"
+                    : "text-[#7D7DFF]"
+                    }`}
                 >
                   Ecosystem
                 </Link>
@@ -104,7 +100,7 @@ export default function EcosystemLayout({
             <div className="w-full">
               {children}
             </div>
-            
+
           </div>
         </div>
       </main>
