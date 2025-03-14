@@ -2,6 +2,7 @@
 
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { useInView } from "framer-motion";
 
@@ -163,11 +164,13 @@ export const Onchain = () => {
                                             <li key={`first-${index}`}>
                                                 <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[45px] h-[45px] sm:w-[65px] sm:h-[65px] flex items-center justify-center">
                                                     <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                                                        <img
-                                                            decoding="async"
+                                                        <Image
                                                             src={logo.src}
                                                             alt={logo.alt}
+                                                            width={65}
+                                                            height={65}
                                                             className="block max-w-full max-h-full object-contain"
+                                                            sizes="(max-width: 640px) 45px, 65px"
                                                         />
                                                     </div>
                                                 </div>
@@ -179,27 +182,33 @@ export const Onchain = () => {
                                             <li key={`second-${index}`} aria-hidden="true">
                                                 <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[45px] h-[45px] sm:w-[65px] sm:h-[65px] flex items-center justify-center">
                                                     <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                                                        <img
-                                                            decoding="async"
+                                                        <Image
                                                             src={logo.src}
                                                             alt={logo.alt}
+                                                            width={65}
+                                                            height={65}
                                                             className="block max-w-full max-h-full object-contain"
+                                                            sizes="(max-width: 640px) 45px, 65px"
+                                                            loading="lazy"
                                                         />
                                                     </div>
                                                 </div>
                                             </li>
                                         ))}
 
-                                        {/* Third set of logos for smoother looping - matching HeroSection pattern */}
+                                        {/* Third set of logos for smoother looping */}
                                         {chainLogos.map((logo, index) => (
                                             <li key={`third-${index}`} aria-hidden="true">
                                                 <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[45px] h-[45px] sm:w-[65px] sm:h-[65px] flex items-center justify-center">
                                                     <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                                                        <img
-                                                            decoding="async"
+                                                        <Image
                                                             src={logo.src}
                                                             alt={logo.alt}
+                                                            width={65}
+                                                            height={65}
                                                             className="block max-w-full max-h-full object-contain"
+                                                            sizes="(max-width: 640px) 45px, 65px"
+                                                            loading="lazy"
                                                         />
                                                     </div>
                                                 </div>

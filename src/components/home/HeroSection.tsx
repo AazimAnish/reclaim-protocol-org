@@ -208,11 +208,13 @@ export const HeroSection = () => {
                   <li key={`first-${index}`}>
                     <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
                       <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                        <img
-                          decoding="async"
+                        <Image
                           src={logo.src}
                           alt={logo.alt}
+                          width={55}
+                          height={55}
                           className="block w-full h-full rounded-inherit object-center object-contain"
+                          sizes="(max-width: 640px) 35px, (max-width: 768px) 45px, 55px"
                         />
                       </div>
                     </div>
@@ -224,11 +226,13 @@ export const HeroSection = () => {
                   <li key={`second-${index}`} aria-hidden="true">
                     <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
                       <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                        <img
-                          decoding="async"
+                        <Image
                           src={logo.src}
                           alt={logo.alt}
+                          width={55}
+                          height={55}
                           className="block w-full h-full rounded-inherit object-center object-contain"
+                          sizes="(max-width: 640px) 35px, (max-width: 768px) 45px, 55px"
                         />
                       </div>
                     </div>
@@ -240,11 +244,14 @@ export const HeroSection = () => {
                   <li key={`third-${index}`} aria-hidden="true">
                     <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
                       <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                        <img
-                          decoding="async"
+                        <Image
                           src={logo.src}
                           alt={logo.alt}
+                          width={55}
+                          height={55}
                           className="block w-full h-full rounded-inherit object-center object-contain"
+                          sizes="(max-width: 640px) 35px, (max-width: 768px) 45px, 55px"
+                          loading="lazy"
                         />
                       </div>
                     </div>
