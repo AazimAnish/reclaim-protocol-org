@@ -36,6 +36,32 @@ export const HeroSection = () => {
     }
   };
 
+  // Animation for hero icon - starts after title animation
+  const iconVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        delay: 1.0 // Delay after title animation (0.8 + 0.2)
+      }
+    }
+  };
+
+  // Animation for button - starts after icon animation
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 1.6 // Delay after icon animation (0.8 + 0.2 + 0.6)
+      }
+    }
+  };
+
   // Define the client logos to display
   const clientLogos = [
     { src: "/carosal/Tmr.news.png", alt: "TMR.NEWS" },
@@ -105,13 +131,19 @@ export const HeroSection = () => {
               <h1 className="font-['Poppins'] text-[38px] sm:text-[60px] md:text-[80px] font-semibold tracking-tight leading-[115%] text-center max-w-3xl">
                 <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                   Verify<span className="text-[#0000EE] px-1 sm:px-2">Any Data</span>
-                  <Image
-                    src="/heroIcon.svg"
-                    width={84}
-                    height={75}
-                    alt="Hero icon"
-                    className="inline-block w-[40px] h-auto sm:w-[70px] md:w-[84px]"
-                  />
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={iconVariants}
+                  >
+                    <Image
+                      src="/heroIcon.svg"
+                      width={84}
+                      height={75}
+                      alt="Hero icon"
+                      className="inline-block w-[40px] h-auto sm:w-[70px] md:w-[84px]"
+                    />
+                  </motion.div>
                 </div>
                 <div>
                   on the Internet
@@ -137,6 +169,9 @@ export const HeroSection = () => {
 
           {/* Call to Action Button */}
           <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={buttonVariants}
             whileHover={{
               backgroundColor: "#FFFFFF",
               color: "#0000EE",
@@ -160,60 +195,63 @@ export const HeroSection = () => {
       {/* Clients Carousel Section */}
       <div className="px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-8 sm:py-12 md:py-16 w-full overflow-hidden pt-28" data-framer-name="Container">
         <div className="[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_15%,rgb(0,0,0)_85%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_15%,rgb(0,0,0)_85%,rgba(0,0,0,0)_100%)]">
-          <section className="flex w-full h-full max-w-full max-h-full place-items-center m-0 px-2 sm:px-4 md:px-8 pb-6 pt-2 list-none opacity-100 overflow-hidden">
-            <motion.ul
-              ref={carouselContainerRef}
-              animate={controls}
-              className="flex w-fit h-full max-h-full place-items-center m-0 p-0 list-none gap-[30px] sm:gap-[40px] md:gap-[60px] lg:gap-[80px] relative flex-row will-change-transform"
-            >
-              {/* First set of logos */}
-              {clientLogos.map((logo, index) => (
-                <li key={`first-${index}`}>
-                  <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
-                    <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                      <img
-                        decoding="async"
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="block w-full h-full rounded-inherit object-center object-contain"
-                      />
+          <section className="flex justify-center w-full max-w-full mx-auto">
+            {/* Carousel container with specific dimensions */}
+            <div className="w-[352px] h-[100px] sm:w-[1280px] sm:h-[217px] overflow-hidden relative">
+              <motion.ul
+                ref={carouselContainerRef}
+                animate={controls}
+                className="flex top-0 h-full place-items-center m-0 p-0 list-none gap-[30px] sm:gap-[40px] md:gap-[60px] lg:gap-[80px] relative flex-row will-change-transform"
+              >
+                {/* First set of logos */}
+                {clientLogos.map((logo, index) => (
+                  <li key={`first-${index}`}>
+                    <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
+                      <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
+                        <img
+                          decoding="async"
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="block w-full h-full rounded-inherit object-center object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-              
-              {/* Second set of logos (duplicated) */}
-              {clientLogos.map((logo, index) => (
-                <li key={`second-${index}`} aria-hidden="true">
-                  <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
-                    <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                      <img
-                        decoding="async"
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="block w-full h-full rounded-inherit object-center object-contain"
-                      />
+                  </li>
+                ))}
+                
+                {/* Second set of logos (duplicated) */}
+                {clientLogos.map((logo, index) => (
+                  <li key={`second-${index}`} aria-hidden="true">
+                    <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
+                      <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
+                        <img
+                          decoding="async"
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="block w-full h-full rounded-inherit object-center object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-              
-              {/* Third set of logos for smoother looping */}
-              {clientLogos.map((logo, index) => (
-                <li key={`third-${index}`} aria-hidden="true">
-                  <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
-                    <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
-                      <img
-                        decoding="async"
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="block w-full h-full rounded-inherit object-center object-contain"
-                      />
+                  </li>
+                ))}
+                
+                {/* Third set of logos for smoother looping */}
+                {clientLogos.map((logo, index) => (
+                  <li key={`third-${index}`} aria-hidden="true">
+                    <div className="flex-shrink-0 relative rounded-xl overflow-hidden w-[35px] h-[35px] sm:w-[45px] sm:h-[45px] md:w-[55px] md:h-[55px]">
+                      <div className="absolute inset-0 flex items-center justify-center rounded-inherit" data-framer-background-image-wrapper="true">
+                        <img
+                          decoding="async"
+                          src={logo.src}
+                          alt={logo.alt}
+                          className="block w-full h-full rounded-inherit object-center object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-            </motion.ul>
+                  </li>
+                ))}
+              </motion.ul>
+            </div>
           </section>
         </div>
 
