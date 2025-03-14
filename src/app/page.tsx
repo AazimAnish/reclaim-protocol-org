@@ -1,7 +1,6 @@
 "use client";
 
 import { HeroSection } from "@/components/home/HeroSection";
-import { Navbar } from "@/components/home/Navbar";
 import { Verifier } from "@/components/home/Verifier";
 import { GoLive } from "@/components/home/GoLive";
 import { Onchain } from "@/components/home/Onchain";
@@ -55,7 +54,6 @@ export default function Home() {
         </motion.div>
       </div>
 
-      <Navbar />
       <main className="flex-1 w-full pt-[76px] sm:pt-[92px] md:pt-[108px] lg:pt-[124px]">
         <div className="pt-16 sm:pt-24 md:pt-32 lg:pt-40">
           <HeroSection />
