@@ -1,15 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 export const GoLive = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  
+  // Create refs for the elements we want to animate
+  const headingRef = useRef(null);
+  const buttonRef = useRef(null);
+  
+  // Check if elements are in view
+  const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
+  const isButtonInView = useInView(buttonRef, { once: true, amount: 0.5 });
 
   const playVideo = () => {
     setIsVideoPlaying(true);
+  };
+
+  // Animation variants for heading
+  const headingVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.2
+      }
+    }
+  };
+
+  // Animation for button - starts after heading animation
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.2 // Shorter delay since we're controlling with inView
+      }
+    }
   };
 
   return (
@@ -17,10 +51,15 @@ export const GoLive = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex flex-col items-center gap-8 sm:gap-10 md:gap-12">
           {/* Heading */}
-          <div className="text-center">
-            <h2 className="font-['Poppins'] text-[28px] sm:text-[36px] md:text-[48px] font-medium tracking-tight leading-[115%] text-[#0000EE]">
+          <div className="text-center" ref={headingRef}>
+            <motion.h2 
+              initial="hidden"
+              animate={isHeadingInView ? "visible" : "hidden"}
+              variants={headingVariants}
+              className="font-['Poppins'] text-[28px] sm:text-[36px] md:text-[48px] font-medium tracking-tight leading-[115%] text-[#0000EE]"
+            >
               Go Live into production <br className="hidden sm:inline" /> in less than 10 mins!
-            </h2>
+            </motion.h2>
           </div>
 
           {/* Responsive YouTube Video Container */}
@@ -67,6 +106,10 @@ export const GoLive = () => {
 
           {/* Button with animation */}
           <motion.div
+            ref={buttonRef}
+            initial="hidden"
+            animate={isButtonInView ? "visible" : "hidden"}
+            variants={buttonVariants}
             whileHover={{
               backgroundColor: "#FFFFFF",
               color: "#0000EE",

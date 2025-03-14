@@ -3,10 +3,47 @@
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
+import { useInView } from "framer-motion";
 
 export const Onchain = () => {
   const carouselContainerRef = useRef<HTMLUListElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
+  
   const controls = useAnimation();
+  const headingControls = useAnimation();
+  const buttonControls = useAnimation();
+  
+  const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 });
+  const isButtonInView = useInView(buttonRef, { once: true, amount: 0.5 });
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  // Animation variants for heading
+  const headingVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.2
+      }
+    }
+  };
+
+  // Animation for button - starts after heading animation
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.4
+      }
+    }
+  };
 
   // Define the blockchain logos to display
   const chainLogos = [
@@ -42,8 +79,25 @@ export const Onchain = () => {
     { src: "/onchain/aleph.png", alt: "Aleph" },
   ];
 
+  // Effect for heading animation
   useEffect(() => {
-    // Initialize carousel animation
+    if (isHeadingInView) {
+      headingControls.start("visible");
+    }
+  }, [isHeadingInView, headingControls]);
+
+  // Effect for button animation
+  useEffect(() => {
+    if (isButtonInView && isHeadingInView) {
+      buttonControls.start("visible");
+    }
+  }, [isButtonInView, isHeadingInView, buttonControls]);
+
+  // Effect for carousel animation - only starts when section is in view
+  useEffect(() => {
+    if (!isSectionInView) return;
+    
+    // Initialize carousel animation when in view
     const startAnimation = async () => {
       const logoWidth = 60; // Width of each logo
       const logoGap = 90; // Increased spacing between logos
@@ -73,17 +127,23 @@ export const Onchain = () => {
     return () => {
       controls.stop();
     };
-  }, [controls, chainLogos.length]);
+  }, [controls, chainLogos.length, isSectionInView]);
 
   return (
-    <div className="w-full">
+    <div className="w-full" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex flex-col items-center gap-8 sm:gap-10 md:gap-12">
           {/* Heading */}
           <div className="text-center">
-            <h2 className="font-['Poppins'] text-[28px] sm:text-[36px] md:text-[48px] font-[500] tracking-tight leading-[55px] text-[#0000EE]">
+            <motion.h2 
+              ref={headingRef}
+              initial="hidden"
+              animate={headingControls}
+              variants={headingVariants}
+              className="font-['Poppins'] text-[28px] sm:text-[36px] md:text-[48px] font-[500] tracking-tight leading-[55px] text-[#0000EE]"
+            >
               Live and Growing <br className="hidden sm:inline" /> across many ecosystems, onchain
-            </h2>
+            </motion.h2>
           </div>
 
           {/* Blockchain Logos Carousel */}
@@ -95,6 +155,7 @@ export const Onchain = () => {
                   <motion.ul
                     ref={carouselContainerRef}
                     animate={controls}
+                    initial={{ x: 0 }}
                     className="flex absolute top-0 h-full place-items-center m-0 p-0 list-none gap-[60px] sm:gap-[70px] md:gap-[80px] relative flex-row will-change-transform"
                   >
                     {/* First set of logos */}
@@ -153,6 +214,10 @@ export const Onchain = () => {
           {/* View Chains Button */}
           <div className="flex justify-center mt-4 mb-10">
             <motion.div
+              ref={buttonRef}
+              initial="hidden"
+              animate={buttonControls}
+              variants={buttonVariants}
               whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center font-['Poppins', 'Poppins Placeholder', sans-serif] font-[400] text-[#0000EE] text-[20px] leading-[26px] cursor-pointer"
@@ -166,4 +231,4 @@ export const Onchain = () => {
       </div>
     </div>
   );
-}; 
+};

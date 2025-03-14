@@ -36,6 +36,32 @@ export const HeroSection = () => {
     }
   };
 
+  // Animation for hero icon - starts after title animation
+  const iconVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        delay: 1.0 // Delay after title animation (0.8 + 0.2)
+      }
+    }
+  };
+
+  // Animation for button - starts after icon animation
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 1.6 // Delay after icon animation (0.8 + 0.2 + 0.6)
+      }
+    }
+  };
+
   // Define the client logos to display
   const clientLogos = [
     { src: "/carosal/Tmr.news.png", alt: "TMR.NEWS" },
@@ -105,13 +131,19 @@ export const HeroSection = () => {
               <h1 className="font-['Poppins'] text-[38px] sm:text-[60px] md:text-[80px] font-semibold tracking-tight leading-[115%] text-center max-w-3xl">
                 <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                   Verify<span className="text-[#0000EE] px-1 sm:px-2">Any Data</span>
-                  <Image
-                    src="/heroIcon.svg"
-                    width={84}
-                    height={75}
-                    alt="Hero icon"
-                    className="inline-block w-[40px] h-auto sm:w-[70px] md:w-[84px]"
-                  />
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={iconVariants}
+                  >
+                    <Image
+                      src="/heroIcon.svg"
+                      width={84}
+                      height={75}
+                      alt="Hero icon"
+                      className="inline-block w-[40px] h-auto sm:w-[70px] md:w-[84px]"
+                    />
+                  </motion.div>
                 </div>
                 <div>
                   on the Internet
@@ -137,6 +169,9 @@ export const HeroSection = () => {
 
           {/* Call to Action Button */}
           <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={buttonVariants}
             whileHover={{
               backgroundColor: "#FFFFFF",
               color: "#0000EE",
@@ -166,7 +201,7 @@ export const HeroSection = () => {
               <motion.ul
                 ref={carouselContainerRef}
                 animate={controls}
-                className="flex absolute top-0 h-full place-items-center m-0 p-0 list-none gap-[30px] sm:gap-[40px] md:gap-[60px] lg:gap-[80px] relative flex-row will-change-transform"
+                className="flex top-0 h-full place-items-center m-0 p-0 list-none gap-[30px] sm:gap-[40px] md:gap-[60px] lg:gap-[80px] relative flex-row will-change-transform"
               >
                 {/* First set of logos */}
                 {clientLogos.map((logo, index) => (

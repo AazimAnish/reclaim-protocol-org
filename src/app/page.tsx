@@ -20,7 +20,7 @@ export default function Home() {
   const vectorTransform = useTransform(
     scrollYProgress,
     [0, 0.5],
-    ["translateY(140px) scale(1.4)", "translateY(500px) scale(5)"]
+    ["translateY(140px) scale(1)", "translateY(140px) scale(3.5)"]
   );
 
   return (
@@ -34,7 +34,8 @@ export default function Home() {
           style={{
             willChange: "transform",
             opacity: vectorOpacity,
-            transform: vectorTransform
+            transform: vectorTransform,
+            transformOrigin: "bottom"
           }}
         >
           <div
