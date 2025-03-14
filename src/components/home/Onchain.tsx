@@ -156,7 +156,7 @@ export const Onchain = () => {
                     ref={carouselContainerRef}
                     animate={controls}
                     initial={{ x: 0 }}
-                    className="flex absolute top-0 h-full place-items-center m-0 p-0 list-none gap-[60px] sm:gap-[70px] md:gap-[80px] relative flex-row will-change-transform"
+                    className="flex top-0 h-full place-items-center m-0 p-0 list-none gap-[60px] sm:gap-[70px] md:gap-[80px] relative flex-row will-change-transform"
                   >
                     {/* First set of logos */}
                     {chainLogos.map((logo, index) => (
