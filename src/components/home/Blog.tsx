@@ -41,10 +41,11 @@ export const Blog = () => {
     const isButtonInView = useInView(buttonRef, { once: true, amount: 0.5 });
     const isSectionInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-    // State for current card
+    // State for current card and window size
     const [currentCard, setCurrentCard] = useState(1);
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(0);
 
     // Animation variants
     const headingVariants = {
@@ -133,6 +134,26 @@ export const Blog = () => {
         }
     };
 
+    // Handle window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        // Set initial width when component mounts
+        if (typeof window !== 'undefined') {
+            setWindowWidth(window.innerWidth);
+            window.addEventListener('resize', handleResize);
+        }
+
+        return () => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', handleResize);
+            }
+        };
+    }, []);
+
+    // Handle carousel scroll events
     useEffect(() => {
         const carousel = carouselRef.current;
         if (carousel) {
@@ -141,11 +162,25 @@ export const Blog = () => {
         }
     }, [currentCard]);
 
+    // Determine layout based on window width
+    const getLayoutClass = () => {
+        if (windowWidth === 0) return "flex overflow-x-auto"; // Default for SSR
+        
+        // Custom breakpoints that account for the card width (347px) plus gap (24px)
+        if (windowWidth >= 1100) {
+            return "grid grid-cols-3"; // 3 cards fit with gap
+        } else if (windowWidth >= 750) {
+            return "grid grid-cols-2"; // 2 cards fit with gap
+        } else {
+            return "flex overflow-x-auto"; // Single scrollable card
+        }
+    };
+
     return (
         <section
             ref={sectionRef}
             id="blogs"
-            className="w-full max-w-[1280px] h-[664.8px] mx-auto pb-20 sm:pb-24 md:pb-28 px-4 sm:px-16 md:px-20"
+            className="w-full max-w-[1280px] h-auto min-h-[664.8px] mx-auto pb-20 sm:pb-24 md:pb-2 px-4 sm:px-16 md:px-20"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 <div className="flex flex-col items-center md:items-start gap-4 sm:gap-6 md:gap-8">
@@ -171,11 +206,11 @@ export const Blog = () => {
                         </motion.h2>
                     </div>
 
-                    {/* Blog Cards - Horizontal scrolling on mobile */}
+                    {/* Blog Cards - Dynamic responsive layout */}
                     <div className="w-full relative">
                         <div
                             ref={carouselRef}
-                            className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 pb-4"
+                            className={`${getLayoutClass()} scrollbar-hide snap-x snap-mandatory gap-6 pb-4`}
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollSnapType: 'x mandatory' }}
                             onTouchStart={handleTouchStart}
                             onTouchMove={handleTouchMove}
@@ -203,7 +238,7 @@ export const Blog = () => {
                                                     src={post.image}
                                                     alt={post.title}
                                                     fill
-                                                    sizes="(max-width: 640px) 100vw, 347px"
+                                                    sizes="(max-width: 750px) 100vw, (max-width: 1100px) 50vw, 347px"
                                                     className="object-cover object-center rounded-xl"
                                                 />
                                             </div>
@@ -223,18 +258,20 @@ export const Blog = () => {
                             ))}
                         </div>
 
-                        {/* Pagination indicators */}
-                        <div className="flex justify-center mt-4 md:hidden">
-                            {blogPosts.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => scrollToCard(index + 1)}
-                                    className={`w-2 h-2 mx-1 rounded-full transition-colors ${currentCard === index + 1 ? 'bg-[#0000EE]' : 'bg-gray-300'
-                                        }`}
-                                    aria-label={`Go to slide ${index + 1}`}
-                                />
-                            ))}
-                        </div>
+                        {/* Pagination indicators - visible only when in carousel mode */}
+                        {windowWidth < 750 && (
+                            <div className="flex justify-center mt-4">
+                                {blogPosts.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => scrollToCard(index + 1)}
+                                        className={`w-2 h-2 mx-1 rounded-full transition-colors ${currentCard === index + 1 ? 'bg-[#0000EE]' : 'bg-gray-300'
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* Start Reading Button - Centered on mobile */}
