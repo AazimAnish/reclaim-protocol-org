@@ -72,7 +72,7 @@ export const Verifier = () => {
                         {/* Decorative Elements positioned relative to background */}
                         <div className="absolute w-full h-full">
                             {/* LinkedIn logo */}
-                            <div className="absolute top-[58%] left-[20%] transform rotate-6">
+                            <div className="absolute top-[60%] left-[18%] transform rotate-6">
                                 <Image
                                     src="/verifier-bg/linkedin.png"
                                     alt="LinkedIn"
@@ -84,7 +84,7 @@ export const Verifier = () => {
                             </div>
 
                             {/* X logo */}
-                            <div className="absolute bottom-[25%] left-[27%] transform -rotate-4">
+                            <div className="absolute bottom-[15%] left-[27%] transform -rotate-4">
                                 <Image
                                     src="/verifier-bg/x.png"
                                     alt="X"
@@ -96,7 +96,7 @@ export const Verifier = () => {
                             </div>
 
                             {/* Uber logo */}
-                            <div className="absolute top-[30%] left-[23%] transform rotate-[7deg] w-[78px] h-[78px] overflow-hidden rounded-[10px]">
+                            <div className="absolute top-[22%] left-[23%] transform rotate-[7deg] w-[78px] h-[78px] overflow-hidden rounded-[10px]">
                                 <Image
                                     src="/verifier-bg/uber.png"
                                     alt="Uber"
