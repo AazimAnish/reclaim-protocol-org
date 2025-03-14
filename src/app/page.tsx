@@ -3,6 +3,7 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { Navbar } from "@/components/home/Navbar";
 import { Verifier } from "@/components/home/Verifier";
+import { GoLive } from "@/components/home/GoLive";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -50,12 +51,15 @@ export default function Home() {
       </div>
 
       <Navbar />
-      <main className="flex-1 w-full">
+      <main className="flex-1 w-full pt-[76px] sm:pt-[92px] md:pt-[108px] lg:pt-[124px]">
         <div className="pt-16 sm:pt-24 md:pt-32 lg:pt-40">
           <HeroSection />
         </div>
         <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-32">
           <Verifier />
+        </div>
+        <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-32 mb-16 sm:mb-20 md:mb-24 lg:mb-32">
+          <GoLive />
         </div>
       </main>
 
