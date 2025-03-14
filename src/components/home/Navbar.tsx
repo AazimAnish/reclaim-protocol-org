@@ -3,10 +3,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll event to add background effect when scrolled
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+    
+    // Initial check
+    handleScroll();
+    
+    // Clean up
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrolled]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,7 +35,11 @@ export const Navbar = () => {
   const navItems = ["Documentation", "Github", "Ecosystem", "Dashboard"];
 
   return (
-    <nav className="w-full flex justify-between items-center mx-auto absolute top-0 left-0 px-4 sm:px-8 md:px-16 py-6 sm:py-8 md:py-10 z-50 bg-transparent">
+    <nav 
+      className={`w-full flex justify-between items-center mx-auto fixed top-0 left-0 px-8 py-10 sm:px-8 md:px-16 sm:py-8 md:py-10 z-50 transition-all duration-300 ease-in-out ${
+        scrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+      }`}
+    >
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <Image

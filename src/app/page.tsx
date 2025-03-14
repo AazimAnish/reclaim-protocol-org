@@ -51,7 +51,7 @@ export default function Home() {
       </div>
 
       <Navbar />
-      <main className="flex-1 w-full">
+      <main className="flex-1 w-full pt-[76px] sm:pt-[92px] md:pt-[108px] lg:pt-[124px]">
         <div className="pt-16 sm:pt-24 md:pt-32 lg:pt-40">
           <HeroSection />
         </div>
