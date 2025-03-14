@@ -20,10 +20,10 @@ export const Navbar = () => {
 
     // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-    
+
     // Initial check
     handleScroll();
-    
+
     // Clean up
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled]);
@@ -35,10 +35,9 @@ export const Navbar = () => {
   const navItems = ["Documentation", "Github", "Ecosystem", "Dashboard"];
 
   return (
-    <nav 
-      className={`w-full flex justify-between items-center mx-auto fixed top-0 left-0 px-8 py-10 sm:px-8 md:px-16 sm:py-8 md:py-10 z-50 transition-all duration-300 ease-in-out ${
-        scrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'
-      }`}
+    <nav
+      className={`w-full flex justify-between items-center mx-auto fixed top-0 left-0 px-8 py-10 sm:px-6 md:px-8 lg:px-8 sm:py-8 md:py-6 z-50 transition-all duration-300 ease-in-out ${scrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+        }`}
     >
       {/* Logo */}
       <Link href="/" className="flex items-center">
@@ -48,15 +47,15 @@ export const Navbar = () => {
           width={169}
           height={40}
           priority
-          className="object-contain"
+          className="object-contain md:w-[130px] lg:w-[169px]"
         />
       </Link>
 
       {/* Desktop Navigation Links */}
       <div
-        className="hidden md:flex rounded-full px-8 py-3.5 border border-[#0000EE] backdrop-blur-[10px]"
+        className="hidden md:flex rounded-full px-3 md:px-4 lg:px-8 py-3.5 border border-[#0000EE] backdrop-blur-[10px]"
       >
-        <div className="flex space-x-8">
+        <div className="flex md:space-x-4 lg:space-x-8">
           {navItems.map((item, index) => (
             <div
               key={index}
@@ -66,7 +65,7 @@ export const Navbar = () => {
                   item === "Github" ? "https://github.com/reclaimprotocol" :
                     item === "Ecosystem" ? "/ecosystem" :
                       "https://dev.reclaimprotocol.org/"}
-                className="font-['Poppins'] text-[#0000EE]"
+                className="font-['Poppins'] text-[#0000EE] md:text-sm lg:text-base"
                 target={item === "Documentation" || item === "Github" ? "_blank" : undefined}
                 rel={item === "Documentation" || item === "Github" ? "noopener" : undefined}
               >
@@ -83,36 +82,33 @@ export const Navbar = () => {
           backgroundColor: "#0000EE",
           transition: { duration: 0.3 }
         }}
-        className="hidden md:block rounded-full border border-[#0000EE] px-8 py-3.5 font-medium cursor-pointer bg-transparent group"
+        className="hidden md:block rounded-full border border-[#0000EE] md:px-4 lg:px-8 py-3.5 font-medium cursor-pointer bg-transparent group"
       >
         <Link
           href="https://calendly.com/adithya-creatoros/let-s-talk-about-zktls"
-          className="font-['Poppins'] whitespace-nowrap text-[#0000EE] group-hover:text-white transition-colors duration-300"
+          className="font-['Poppins'] whitespace-nowrap text-[#0000EE] md:text-sm lg:text-base group-hover:text-white transition-colors duration-300"
         >
           Talk to our team
         </Link>
       </motion.div>
 
       {/* Hamburger menu - visible on mobile */}
-      <button 
+      <button
         className="md:hidden flex flex-col justify-center items-center w-8 h-8 z-50"
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
-        <span 
-          className={`block w-6 h-0.5 bg-[#0000EE] transition-all duration-300 ease-out ${
-            isMenuOpen ? 'rotate-45 translate-y-1' : 'mb-1.5'
-          }`}
+        <span
+          className={`block w-6 h-0.5 bg-[#0000EE] transition-all duration-300 ease-out ${isMenuOpen ? 'rotate-45 translate-y-1' : 'mb-1.5'
+            }`}
         />
-        <span 
-          className={`block w-6 h-0.5 bg-[#0000EE] transition-all duration-300 ease-out ${
-            isMenuOpen ? 'opacity-0' : 'mb-1.5'
-          }`}
+        <span
+          className={`block w-6 h-0.5 bg-[#0000EE] transition-all duration-300 ease-out ${isMenuOpen ? 'opacity-0' : 'mb-1.5'
+            }`}
         />
-        <span 
-          className={`block w-6 h-0.5 bg-[#0000EE] transition-all duration-300 ease-out ${
-            isMenuOpen ? '-rotate-45 -translate-y-1' : ''
-          }`}
+        <span
+          className={`block w-6 h-0.5 bg-[#0000EE] transition-all duration-300 ease-out ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''
+            }`}
         />
       </button>
 

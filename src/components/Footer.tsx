@@ -14,9 +14,9 @@ export const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center sm:items-center gap-8 relative z-10">
           {/* Logo */}
           <div>
-            <Image 
-              src="/reclaim.png" 
-              alt="Reclaim Protocol" 
+            <Image
+              src="/reclaim.png"
+              alt="Reclaim Protocol"
               width={140}
               height={40}
               className="h-auto object-contain"
@@ -24,41 +24,41 @@ export const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-6 text-center sm:text-left">
-            <Link 
-              href="https://reclaimprotocol.notion.site/Privacy-Policy-Reclaim-Protocol-115275b816cb80ab94b8ca8616673658?pvs=4" 
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-center sm:text-left">
+            <Link
+              href="https://reclaimprotocol.notion.site/Privacy-Policy-Reclaim-Protocol-115275b816cb80ab94b8ca8616673658?pvs=4"
               target="_blank"
               rel="noopener"
               className="font-['Poppins', 'Poppins Placeholder', sans-serif] text-[16px] leading-[21px] text-[#0000EE] hover:text-[#A8A8FF] transition-colors"
             >
               Privacy & Cookie Policy
             </Link>
-            <Link 
-              href="https://reclaimprotocol.notion.site/Terms-of-Service-Reclaim-Protocol-13c275b816cb80b1a5ade76c6f2532dd?pvs=4" 
+            <Link
+              href="https://reclaimprotocol.notion.site/Terms-of-Service-Reclaim-Protocol-13c275b816cb80b1a5ade76c6f2532dd?pvs=4"
               target="_blank"
               rel="noopener"
               className="font-['Poppins', 'Poppins Placeholder', sans-serif] text-[16px] leading-[21px] text-[#0000EE] hover:text-[#A8A8FF] transition-colors"
             >
               Terms & Conditions
             </Link>
-            <Link 
-              href="https://github.com/reclaimprotocol" 
+            <Link
+              href="https://github.com/reclaimprotocol"
               target="_blank"
               rel="noopener"
               className="font-['Poppins', 'Poppins Placeholder', sans-serif] text-[16px] leading-[21px] text-[#0000EE] hover:text-[#A8A8FF] transition-colors"
             >
               Github
             </Link>
-            <Link 
-              href="https://drive.google.com/file/d/1LS9cJbOtcUQB7t84yQf4BuPyxiV7c6Vc/view" 
+            <Link
+              href="https://drive.google.com/file/d/1LS9cJbOtcUQB7t84yQf4BuPyxiV7c6Vc/view"
               target="_blank"
               rel="noopener"
               className="font-['Poppins', 'Poppins Placeholder', sans-serif] text-[16px] leading-[21px] text-[#0000EE] hover:text-[#A8A8FF] transition-colors"
             >
               Litepaper
             </Link>
-            <Link 
-              href="https://drive.google.com/file/d/1wmfdtIGPaN9uJBI1DHqN903tP9c_aTG2/view" 
+            <Link
+              href="https://drive.google.com/file/d/1wmfdtIGPaN9uJBI1DHqN903tP9c_aTG2/view"
               target="_blank"
               rel="noopener"
               className="font-['Poppins', 'Poppins Placeholder', sans-serif] text-[16px] leading-[21px] text-[#0000EE] hover:text-[#A8A8FF] transition-colors"
