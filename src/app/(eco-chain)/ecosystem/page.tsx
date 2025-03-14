@@ -215,20 +215,20 @@ export default function EcosystemPage() {
   return (
     <div className="w-full">
       {/* Partner Cards Grid */}
-      <div className="px-4 md:px-8 mb-16">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="px-4 md:px-8 mb-16 container mx-auto">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {partners.map((partner, index) => (
-            <motion.div 
+            <motion.div
               key={partner.name}
-              className="bg-white rounded-lg shadow-md border border-gray-100 p-6 flex flex-col justify-between h-full"
+              className="bg-white rounded-lg shadow-md border border-gray-100 p-4 md:p-6 flex flex-col justify-between h-full w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
+              transition={{
                 delay: Math.min(index * 0.05, 1),
                 duration: 0.5
               }}
-              whileHover={{ 
+              whileHover={{
                 y: -5,
                 transition: { duration: 0.2 }
               }}
@@ -252,32 +252,31 @@ export default function EcosystemPage() {
                     {partner.name}
                   </h3>
                 </div>
-                
+
                 {/* Description */}
                 <p className="font-['Poppins'] text-[14px] leading-[18px] font-[400] text-[#B0B0B0] mb-6">
                   {partner.description}
                 </p>
               </div>
-              
+
               {/* Buttons */}
-              <div className="flex flex-wrap gap-2">
-                <Link 
-                  href={partner.visitUrl} 
-                  target="_blank" 
+              <div className="flex flex-wrap md:flex-nowrap gap-2 w-full">
+                <Link
+                  href={partner.visitUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#0000EE] text-white font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-6 rounded-lg hover:bg-[#0000CC] transition-colors"
+                  className="bg-[#0000EE] text-white font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-4 md:px-6 rounded-lg hover:bg-[#0000CC] transition-colors flex-1 text-center"
                 >
                   Visit
                 </Link>
-                <Link 
-                  href={partner.demoUrl !== "#" ? partner.demoUrl : ""} 
-                  target="_blank" 
+                <Link
+                  href={partner.demoUrl !== "#" ? partner.demoUrl : ""}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className={`font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-6 rounded-lg border transition-colors ${
-                    partner.demoUrl !== "#" 
-                      ? "bg-white text-[#0000EE] border-[#0000EE] hover:bg-[#F8F8FF] cursor-pointer" 
+                  className={`font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-4 md:px-6 rounded-lg border transition-colors flex-1 text-center ${partner.demoUrl !== "#"
+                      ? "bg-white text-[#0000EE] border-[#0000EE] hover:bg-[#F8F8FF] cursor-pointer"
                       : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
-                  }`}
+                    }`}
                   onClick={(e) => {
                     if (partner.demoUrl === "#") {
                       e.preventDefault();
