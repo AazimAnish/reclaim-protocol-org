@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export const BackgroundVector = () => {
 
@@ -36,11 +37,12 @@ export const BackgroundVector = () => {
                     className="absolute inset-0 rounded-inherit"
                     data-framer-background-image-wrapper="true"
                 >
-                    <img
-                        decoding="async"
+                    <Image
                         src="/hero-bg.svg"
                         alt=""
+                        fill
                         className="block w-full h-full rounded-inherit object-center object-contain"
+                        priority
                     />
                 </div>
             </motion.div>

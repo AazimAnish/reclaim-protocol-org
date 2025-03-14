@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export default function EcosystemLayout({
