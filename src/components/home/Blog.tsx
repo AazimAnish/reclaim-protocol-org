@@ -180,7 +180,7 @@ export const Blog = () => {
         <section
             ref={sectionRef}
             id="blogs"
-            className="w-full max-w-[1280px] h-auto min-h-[664.8px] mx-auto pb-20 sm:pb-24 md:pb-2 px-4 sm:px-16 md:px-20"
+            className="w-full max-w-[1280px] h-auto min-h-[664.8px] mx-auto pb-2 sm:pb-24 md:pb-2 px-4 sm:px-16 md:px-20"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 <div className="flex flex-col items-center md:items-start gap-4 sm:gap-6 md:gap-8">

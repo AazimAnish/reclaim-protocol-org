@@ -7,6 +7,7 @@ import { GoLive } from "@/components/home/GoLive";
 import { Onchain } from "@/components/home/Onchain";
 import { Blog } from "@/components/home/Blog";
 import { Backed } from "@/components/home/Backed";
+import { FAQ } from "@/components/home/FAQ";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -71,8 +72,11 @@ export default function Home() {
         <div className="mt-2 sm:mt-20 md:mt-24 lg:mt-14">
           <Blog />
         </div>
-        <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-14">
+        <div className="mt-2 sm:mt-20 md:mt-24 lg:mt-14">
           <Backed />
+        </div>
+        <div className="mt-2 sm:mt-20 md:mt-24 lg:mt-14">
+          <FAQ />
         </div>
       </main>
 
