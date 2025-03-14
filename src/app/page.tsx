@@ -6,6 +6,7 @@ import { Verifier } from "@/components/home/Verifier";
 import { GoLive } from "@/components/home/GoLive";
 import { Onchain } from "@/components/home/Onchain";
 import { Blog } from "@/components/home/Blog";
+import { Backed } from "@/components/home/Backed";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
@@ -69,6 +70,9 @@ export default function Home() {
         </div>
         <div className="mt-2 sm:mt-20 md:mt-24 lg:mt-14">
           <Blog />
+        </div>
+        <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-14">
+          <Backed />
         </div>
       </main>
 
