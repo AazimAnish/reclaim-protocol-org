@@ -265,7 +265,7 @@ export default function EcosystemPage() {
                   href={partner.visitUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#0000EE] text-white font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-4 md:px-6 rounded-lg hover:bg-[#0000CC] transition-colors flex-1 text-center"
+                  className="bg-[#0000EE] text-white font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-4 md:px-6 rounded-lg hover:bg-[#0000CC] transition-colors flex-1 flex items-center justify-center h-[45px]"
                 >
                   Visit
                 </Link>
@@ -273,9 +273,9 @@ export default function EcosystemPage() {
                   href={partner.demoUrl !== "#" ? partner.demoUrl : ""}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`font-['Poppins'] text-[16px] leading-[21px] font-[500] py-2 px-4 md:px-6 rounded-lg border transition-colors flex-1 text-center ${partner.demoUrl !== "#"
-                      ? "bg-white text-[#0000EE] border-[#0000EE] hover:bg-[#F8F8FF] cursor-pointer"
-                      : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
+                  className={`font-['Poppins'] text-[16px] leading-[21px] whitespace-nowrap font-[500] py-2 px-2 md:px-6 rounded-lg border transition-colors flex-1 flex items-center justify-center h-[45px] ${partner.demoUrl !== "#"
+                    ? "bg-white text-[#0000EE] border-[#0000EE] hover:bg-[#F8F8FF] cursor-pointer"
+                    : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
                     }`}
                   onClick={(e) => {
                     if (partner.demoUrl === "#") {
@@ -283,7 +283,7 @@ export default function EcosystemPage() {
                     }
                   }}
                 >
-                  Watch demo
+                  <span className="text-[14px] md:text-[16px]">Watch demo</span>
                 </Link>
               </div>
             </motion.div>

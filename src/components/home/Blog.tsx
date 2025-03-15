@@ -223,7 +223,7 @@ export const Blog = () => {
                                     initial="hidden"
                                     animate={isSectionInView ? "visible" : "hidden"}
                                     variants={cardVariants}
-                                    className="w-[347px] h-[434px] flex-shrink-0 snap-center mx-auto md:mx-0"
+                                    className="w-[85vw] max-w-[320px] sm:w-[320px] md:w-[347px] h-[434px] flex-shrink-0 snap-center mx-auto md:mx-0"
                                 >
                                     <Link
                                         href={post.url}
@@ -238,7 +238,7 @@ export const Blog = () => {
                                                     src={post.image}
                                                     alt={post.title}
                                                     fill
-                                                    sizes="(max-width: 750px) 100vw, (max-width: 1100px) 50vw, 347px"
+                                                    sizes="(max-width: 640px) 85vw, (max-width: 750px) 320px, 347px"
                                                     className="object-cover object-center rounded-xl"
                                                 />
                                             </div>

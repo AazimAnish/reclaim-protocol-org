@@ -90,11 +90,11 @@ export const HeroSection = () => {
       const logoWidth = 55; // Width of each logo
       const logoGap = 80; // Gap between logos
       const totalWidth = clientLogos.length * (logoWidth + logoGap); // Total width of all logos with gaps
-      
+
       if (carouselContainerRef.current) {
         // First, ensure the animation starts from the initial position
         controls.set({ x: 0 });
-        
+
         // Start the continuous animation
         controls.start({
           x: -totalWidth,
@@ -110,7 +110,7 @@ export const HeroSection = () => {
     };
 
     startAnimation();
-    
+
     // Clean up animation on unmount
     return () => {
       controls.stop();
@@ -135,6 +135,7 @@ export const HeroSection = () => {
                     initial="hidden"
                     animate="visible"
                     variants={iconVariants}
+                    className="hidden sm:inline-block"
                   >
                     <Image
                       src="/heroIcon.svg"
@@ -142,6 +143,7 @@ export const HeroSection = () => {
                       height={75}
                       alt="Hero icon"
                       className="inline-block w-[40px] h-auto sm:w-[70px] md:w-[84px]"
+                      style={{ width: '100px', height: 'auto' }}
                     />
                   </motion.div>
                 </div>
@@ -149,6 +151,22 @@ export const HeroSection = () => {
                   on the Internet
                 </div>
               </h1>
+
+              {/* Hero icon for mobile - appears after title */}
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={iconVariants}
+                className="sm:hidden mt-4 mb-2"
+              >
+                <Image
+                  src="/heroIcon.svg"
+                  width={70}
+                  height={63}
+                  alt="Hero icon"
+                  style={{ width: '90px', height: 'auto' }}
+                />
+              </motion.div>
             </motion.div>
           </div>
 
@@ -220,7 +238,7 @@ export const HeroSection = () => {
                     </div>
                   </li>
                 ))}
-                
+
                 {/* Second set of logos (duplicated) */}
                 {clientLogos.map((logo, index) => (
                   <li key={`second-${index}`} aria-hidden="true">
@@ -238,7 +256,7 @@ export const HeroSection = () => {
                     </div>
                   </li>
                 ))}
-                
+
                 {/* Third set of logos for smoother looping */}
                 {clientLogos.map((logo, index) => (
                   <li key={`third-${index}`} aria-hidden="true">
