@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Reclaim Protocol - Verify Any Data on the Internet",
   description: "Generate proofs of any data from any website in less than 6 seconds with Reclaim Protocol",
   icons: {
-    icon: '/reclaim.png',
+    icon: '/Reclaim Favicon.png',
   },
 };
 

@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div ref={pageRef} className="min-h-screen flex flex-col relative bg-transparent overflow-x-hidden">
       <main className="flex-1 w-full pt-[76px] sm:pt-[92px] md:pt-[108px] lg:pt-[124px]">
-        <div className="pt-16 sm:pt-24 md:pt-32 lg:pt-40">
+        <div className="pt-16 sm:pt-24 md:pt-32 lg:pt-4">
           <HeroSection />
         </div>
         <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-32">

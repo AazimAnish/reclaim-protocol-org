@@ -36,7 +36,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`w-full flex justify-between items-center mx-auto fixed top-0 left-0 px-8 py-10 sm:px-6 md:px-8 lg:px-8 sm:py-8 md:py-6 z-50 transition-all duration-300 ease-in-out ${scrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+      className={`w-full flex justify-between items-center mx-auto fixed top-0 left-0 px-8 py-10 sm:px-6 md:px-8 lg:px-16 sm:py-8 md:py-10 z-50 transition-all duration-300 ease-in-out ${scrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'
         }`}
     >
       {/* Logo */}

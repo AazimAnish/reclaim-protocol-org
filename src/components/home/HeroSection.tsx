@@ -119,8 +119,8 @@ export const HeroSection = () => {
 
   return (
     <>
-      <section ref={sectionRef} className="flex flex-col relative w-full overflow-hidden gap-[20px] sm:gap-[30px] md:gap-[38px] py-12" id="hero">
-        <div className="flex flex-col items-center w-full max-w-7xl mx-auto gap-5 sm:gap-8 md:gap-10 px-4 sm:px-6 md:px-8 z-10">
+      <section ref={sectionRef} className="flex flex-col relative w-full overflow-hidden gap-[20px] sm:gap-[30px] md:gap-[38px] pt-12 pb-4" id="hero">
+        <div className="flex flex-col items-center w-full max-w-7xl mx-auto gap-5 sm:gap-8 md:gap-4 px-4 sm:px-6 md:px-8 z-10">
           <div className="relative w-full flex flex-col items-center justify-center">
             <motion.div
               initial="hidden"
@@ -211,11 +211,11 @@ export const HeroSection = () => {
       </section>
 
       {/* Clients Carousel Section */}
-      <div className="px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-8 sm:py-12 md:py-16 w-full overflow-hidden pt-28" data-framer-name="Container">
+      <div className="px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-8 sm:py-12 md:py-2 w-full overflow-hidden" data-framer-name="Container">
         <div className="[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_15%,rgb(0,0,0)_85%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgb(0,0,0)_15%,rgb(0,0,0)_85%,rgba(0,0,0,0)_100%)]">
           <section className="flex justify-center w-full max-w-full mx-auto">
             {/* Carousel container with specific dimensions */}
-            <div className="w-[352px] h-[100px] sm:w-[1280px] sm:h-[217px] overflow-hidden relative">
+            <div className="w-[352px] h-[100px] sm:w-[1280px] sm:h-[190px] overflow-hidden relative">
               <motion.ul
                 ref={carouselContainerRef}
                 animate={controls}

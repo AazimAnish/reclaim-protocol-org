@@ -17,7 +17,7 @@ export const BackgroundVector = () => {
     const vectorTransform = useTransform(
         scrollYProgress,
         [0, 0.5],
-        ["translateY(140px) scale(1)", "translateY(140px) scale(3.5)"]
+        ["translateY(140px) scale(1.2)", "translateY(140px) scale(3.5)"]
     );
 
     return (
