@@ -10,54 +10,53 @@ export const HeroSection = () => {
   const carouselContainerRef = useRef<HTMLUListElement>(null);
   const controls = useAnimation();
 
-  // Animation variants for text elements
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.3
-      }
-    }
-  };
-
-  // Animation for hero title
-  const titleVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
+  // Animation for text and button with exact Framer settings
+  const textAndButtonVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8, 
+      y: 30,
+      rotate: 0,
+      skew: 0
+    },
     visible: {
       opacity: 1,
       scale: 1,
+      y: 0,
+      rotate: 0,
+      skew: 0,
       transition: {
-        duration: 0.8,
-        delay: 0.2
+        type: "spring",
+        stiffness: 150,
+        damping: 50,
+        mass: 1,
+        delay: 0.1
       }
     }
   };
 
-  // Animation for hero icon - starts after title animation
+  // Animation for icon - same effect but starts after text/button completes
+  // Estimating the text/button animation to take about 0.7s total (including delay)
   const iconVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8, 
+      y: 30,
+      rotate: 0,
+      skew: 0
+    },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.6,
-        delay: 1.0 // Delay after title animation (0.8 + 0.2)
-      }
-    }
-  };
-
-  // Animation for button - starts after icon animation
-  const buttonVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
       y: 0,
+      rotate: 0,
+      skew: 0,
       transition: {
-        duration: 0.6,
-        delay: 1.6 // Delay after icon animation (0.8 + 0.2 + 0.6)
+        type: "spring",
+        stiffness: 150,
+        damping: 50,
+        mass: 1,
+        delay: 0.8 // Delay to start after text/button animation completes
       }
     }
   };
@@ -125,7 +124,7 @@ export const HeroSection = () => {
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={titleVariants}
+              variants={textAndButtonVariants}
               className="w-full flex flex-col items-center justify-center"
             >
               <h1 className="font-['Poppins'] text-[38px] sm:text-[60px] md:text-[80px] font-semibold tracking-tight leading-[115%] text-center max-w-3xl">
@@ -174,22 +173,19 @@ export const HeroSection = () => {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={textVariants}
+            variants={textAndButtonVariants}
             className="w-full text-center mt-0 sm:mt-1 md:mt-2"
           >
-            <motion.p
-              className="font-['Poppins'] text-base sm:text-lg text-[#7a7a7a] -tracking-[0.01em] leading-[140%] px-2 sm:px-4"
-              variants={textVariants}
-            >
+            <p className="font-['Poppins'] text-base sm:text-lg text-[#7a7a7a] -tracking-[0.01em] leading-[140%] px-2 sm:px-4">
               Generate proofs of any data from any website in less than 6 seconds
-            </motion.p>
+            </p>
           </motion.div>
 
           {/* Call to Action Button */}
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={buttonVariants}
+            variants={textAndButtonVariants}
             whileHover={{
               backgroundColor: "#FFFFFF",
               color: "#0000EE",
